@@ -1,0 +1,73 @@
+{
+  "workflow_description": {
+    "name": "gwas_analysis",
+    "version": 1.0,
+    "label": "Genome-Wide Association Study (GWAS) Analysis",
+    "type": "gwas_analysis",
+    "run_parameters": {
+      "cpu": 10,
+      "memory": 100
+    },
+    "inputs": [
+      "germline_varcalls/{sample}/haplotypecaller/haplotypecaller.vcf"
+    ],
+    "outputs": [
+      "logs/*",
+      "config.json"
+    ],
+    "report_index": "annotate/all_variants.annotated.tsv_summary.html",
+    "reports": [
+      "annotate/all_variants.annotated.tsv_summary.html"
+    ]
+  },
+  "general_params": [
+    "entity_name",
+    "sample_name"
+  ],
+  "requested_params": [
+    "organism",
+    "assembly",
+    "release"
+  ],
+  "gui_params": {
+    "primary": {
+      "plink_geno_threshold": {
+        "label": "Genotyping Threshold",
+        "type": "string",
+        "default": "0.99"
+      },
+      "plink_mind_threshold": {
+        "label": "Minimum Genotyping Rate",
+        "type": "string",
+        "default": "0.99"
+      },
+      "plink_max_female": {
+        "label": "Maximum Female Heterozygosity",
+        "type": "string",
+        "default": "0.65"
+      },
+      "plink_min_male": {
+        "label": "Minimum Male Heterozygosity",
+        "type": "string",
+        "default": "0.65"
+      },
+      "plink_maf": {
+        "label": "Minor Allele Frequency",
+        "type": "string",
+        "default": "0.05"
+      }
+    },
+    "samples": {
+      "sex": {
+        "label": "Sex",
+        "type": "string",
+        "default": "2"
+      },
+      "phenotype": {
+        "label": "Phenotype",
+        "type": "string",
+        "default": ""
+      }
+    }
+  }
+}
